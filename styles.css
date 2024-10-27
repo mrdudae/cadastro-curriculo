@@ -12,7 +12,7 @@ body {
     height: 100vh;
     color: #fff; /* Texto branco */
     transition: background 0.5s ease; /* Transição suave para o fundo */
-    background: url('Leonardo_Phoenix_Create_a_delicate_softfocused_background_cons_2.jpg') no-repeat center center fixed; /* Adicione sua imagem aqui */
+    background: url('img/imagem-flor.jpg') no-repeat center center fixed; /* Adicione sua imagem aqui */
     background-size: cover; /* Cobre toda a área da tela */
     position: relative; /* Adicionado para o correto posicionamento do ::before */
 }
