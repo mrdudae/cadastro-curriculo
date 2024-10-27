@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    height: 100vh;
+    color: #fff; /* Texto branco */
+    transition: background 0.5s ease; /* Transição suave para o fundo */
+    background: url('Leonardo_Phoenix_Create_a_delicate_softfocused_background_cons_2.jpg') no-repeat center center fixed; /* Adicione sua imagem aqui */
+    background-size: cover; /* Cobre toda a área da tela */
+    position: relative; /* Adicionado para o correto posicionamento do ::before */
+}
+
+body::before {
+    content: "";
+    position: absolute; /* Posiciona o elemento antes de todo o conteúdo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.734); /* Filtro escuro (pode ajustar a opacidade) */
+    z-index: -1; /* Coloca a sobreposição atrás do conteúdo */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    margin-top: 10%;
+    font-family: 'Montserrat', sans-serif; /* Fonte estilizada */
+    animation: fadeInUp 1s; /* Animação de entrada */
+}
+
+h2 {
+    margin-top: 5%;
+    font-family: 'Montserrat', sans-serif; /* Fonte estilizada */
+    animation: fadeInUp 1.2s; /* Animação de entrada */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center; /* Centraliza os elementos do formulário */
+    animation: slideIn 0.5s; /* Animação do formulário */
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    width: 250px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(90deg, #5f1d55, #ab47bc) border-box; /* Borda degradê roxa */
+    border: 2px solid transparent;
+    transition: transform 0.2s; /* Transição para animação de foco */
+    text-align: center;
+}
+
+input:focus {
+    transform: scale(1.05); /* Aumenta o tamanho ao focar */
+    outline: none; /* Remove contorno padrão */
+}
+
+/* Estilizando o placeholder */
+input::placeholder {
+    color: #7a0c78; /* Cor do placeholder (roxo claro) */
+    opacity: 0.8; /* Opacidade do placeholder */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #9a1b76; /* Cor de fundo do botão */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra do botão */
+}
+
+button:hover {
+    background-color: #bc479f; /* Cor do botão ao passar o mouse */
+    transform: translateY(-2px); /* Levanta o botão ao passar o mouse */
+}
+
+#flower-list {
+    width: 100%; /* Ocupa toda a largura disponível */
+    padding: 0 20px; /* Adiciona um pouco de padding lateral */
+    margin-top: 5%; /* Espaço entre o formulário e a lista */
+    animation: fadeIn 0.5s; /* Animação da lista de flores */
+}
+
+.flower-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Itens ocupam toda a largura */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borda semi-transparente */
+    margin-bottom: 10px;
+    transition: background-color 0.3s; /* Transição de fundo */
+}
+
+.flower-item:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo mais claro ao passar o mouse */
+}
+
+.flower-actions {
+    display: flex;              /* Usar flexbox para organizar os botões em linha */
+    gap: 10px;                 /* Espaçamento entre os botões */
+    align-items: center;       /* Alinha os itens verticalmente no centro */
+}
+
+.flower-actions button {
+    flex: 0 0 auto;           /* Impede que os botões mudem de tamanho */
+    padding: 5px 10px;        /* Padding interno dos botões */
+    background-color: #bc479b; /* Cor do botão */
+    border: none;             /* Sem borda */
+    border-radius: 5px;      /* Bordas arredondadas */
+    transition: background-color 0.3s; /* Transição suave de cor */
+}
+
+.flower-actions button:hover {
+    background-color: #9a1b8f; /* Cor ao passar o mouse */
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Move o texto para baixo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Retorna à posição original */
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
