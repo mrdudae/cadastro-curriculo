@@ -1,21 +1,22 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Flores</title>
+    <title>Cadastro de Currículos</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Cadastro de Flores</h1>
+    <h1>Cadastro de Currículos</h1>
     <div class="form-container">
-        <input type="text" id="flowerName" placeholder="Nome da Flor" required>
-        <input type="text" id="flowerColor" placeholder="Cor da Flor" required>
-        <button onclick="flowerApp.addFlower()">Cadastrar</button>
+        <input type="text" id="personName" placeholder="Nome Completo" required>
+        <input type="text" id="personAge" placeholder="Idade" required>
+        <input type="text" id="personProfession" placeholder="Profissão" required>
+        <button onclick="curriculumApp.addPerson()">Cadastrar</button>
     </div>
-    <h2>Lista de Flores:</h2>
-    <div id="flower-list"></div>
+    <h2>Lista de Currículos:</h2>
+    <div id="curriculum-list"></div>
     <script src="script.js"></script>
 </body>
 </html>

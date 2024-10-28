@@ -1,66 +1,95 @@
-class Flower {
-    constructor(name, color) {
+class Person {
+    constructor(name, age, profession) {
         this.name = name;
-        this.color = color;
+        this.age = age;
+        this.profession = profession;
     }
 }
 
-class FlowerApp {
+class CurriculumApp {
     constructor() {
-        this.flowers = [];
-        this.editIndex = null;
-        this.renderFlowers();
+        this.people = []; // Array para armazenar os currículos
+        this.editingIndex = null; // Índice da pessoa que está sendo editada
+        this.init();
     }
 
-    addFlower() {
-        const name = document.getElementById('flowerName').value;
-        const color = document.getElementById('flowerColor').value;
-        if (name && color) {
-            if (this.editIndex !== null) {
-                this.flowers[this.editIndex] = new Flower(name, color);
-                this.editIndex = null;
+    init() {
+        document.querySelector('button').addEventListener('click', () => this.addOrUpdatePerson());
+        this.renderList();
+    }
+
+    addOrUpdatePerson() {
+        const name = document.getElementById('personName').value;
+        const age = document.getElementById('personAge').value;
+        const profession = document.getElementById('personProfession').value;
+
+        if (name && age && profession) {
+            if (this.editingIndex !== null) {
+                // Atualiza o currículo existente
+                this.people[this.editingIndex] = new Person(name, age, profession);
+                this.editingIndex = null;
+                document.querySelector('button').innerText = "Cadastrar";
             } else {
-                this.flowers.push(new Flower(name, color));
+                // Adiciona um novo currículo
+                const newPerson = new Person(name, age, profession);
+                this.people.push(newPerson);
             }
+
             this.clearForm();
-            this.renderFlowers();
+            this.renderList();
         } else {
-            alert('Por favor, preencha todos os campos.');
+            alert('Preencha todos os campos.');
         }
     }
 
-    editFlower(index) {
-        document.getElementById('flowerName').value = this.flowers[index].name;
-        document.getElementById('flowerColor').value = this.flowers[index].color;
-        this.editIndex = index;
+    editPerson(index) {
+        // Preenche o formulário com os dados da pessoa a ser editada
+        const person = this.people[index];
+        document.getElementById('personName').value = person.name;
+        document.getElementById('personAge').value = person.age;
+        document.getElementById('personProfession').value = person.profession;
+
+        this.editingIndex = index;
+        document.querySelector('button').innerText = "Atualizar";
     }
 
-    deleteFlower(index) {
-        this.flowers.splice(index, 1);
-        this.renderFlowers();
+    removePerson(index) {
+        this.people.splice(index, 1); // Remove a pessoa do array
+        this.renderList();
+        this.clearForm();
+    }
+
+    renderList() {
+        const curriculumList = document.getElementById('curriculum-list');
+        curriculumList.innerHTML = ''; // Limpa a lista antes de renderizar
+    
+        this.people.forEach((person, index) => {
+            const personItem = document.createElement('div');
+            personItem.className = 'curriculum-item';
+    
+            personItem.innerHTML = `
+                <div class="curriculum-content">
+                    <span><strong>Nome:</strong> ${person.name}</span>
+                    <span><strong>Idade:</strong> ${person.age}</span>
+                    <span><strong>Profissão:</strong> ${person.profession}</span>
+                </div>
+                <div class="curriculum-actions">
+                    <button onclick="curriculumApp.editPerson(${index})">Editar</button>
+                    <button onclick="curriculumApp.removePerson(${index})">Remover</button>
+                </div>
+            `;
+    
+            curriculumList.appendChild(personItem);
+        });
     }
 
     clearForm() {
-        document.getElementById('flowerName').value = '';
-        document.getElementById('flowerColor').value = '';
-    }
-
-    renderFlowers() {
-        const flowerList = document.getElementById('flower-list');
-        flowerList.innerHTML = '';
-        this.flowers.forEach((flower, index) => {
-            const flowerDiv = document.createElement('div');
-            flowerDiv.className = 'flower-item';
-            flowerDiv.innerHTML = `
-                <span>${flower.name} - ${flower.color}</span>
-                <div class="flower-actions">
-                    <button onclick="flowerApp.editFlower(${index})">Editar</button>
-                    <button onclick="flowerApp.deleteFlower(${index})">Deletar</button>
-                </div>
-            `;
-            flowerList.appendChild(flowerDiv);
-        });
+        document.getElementById('personName').value = '';
+        document.getElementById('personAge').value = '';
+        document.getElementById('personProfession').value = '';
+        document.querySelector('button').innerText = "Cadastrar";
     }
 }
 
-const flowerApp = new FlowerApp();
+// Instancia a aplicação de currículos
+const curriculumApp = new CurriculumApp();

@@ -1,3 +1,6 @@
+/* Importa a fonte Poppins com peso de 400 e 700 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,165 +8,151 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center;
     height: 100vh;
-    color: #fff; /* Texto branco */
-    transition: background 0.5s ease; /* Transição suave para o fundo */
-    background: url('img/imagem-flor.jpg') no-repeat center center fixed; /* Adicione sua imagem aqui */
-    background-size: cover; /* Cobre toda a área da tela */
-    position: relative; /* Adicionado para o correto posicionamento do ::before */
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #a0def1, #7b9ed7, #6a82fb, #5358be, #293daf);
+    background-size: 300% 300%;
+    animation: gradientShift 8s ease infinite;
 }
 
-body::before {
-    content: "";
-    position: absolute; /* Posiciona o elemento antes de todo o conteúdo */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.734); /* Filtro escuro (pode ajustar a opacidade) */
-    z-index: -1; /* Coloca a sobreposição atrás do conteúdo */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-    margin-top: 10%;
-    font-family: 'Montserrat', sans-serif; /* Fonte estilizada */
-    animation: fadeInUp 1s; /* Animação de entrada */
+    margin-top: 5%;
+    font-size: 2.8rem;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    animation: fadeInDown 1s ease-out;
 }
 
-h2 {
-    margin-top: 5%;
-    font-family: 'Montserrat', sans-serif; /* Fonte estilizada */
-    animation: fadeInUp 1.2s; /* Animação de entrada */
+/* Animação de fade e deslizamento para o título */
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .form-container {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 6%;
     margin-bottom: 20px;
-    align-items: center; /* Centraliza os elementos do formulário */
-    animation: slideIn 0.5s; /* Animação do formulário */
-}
-
-input {
-    padding: 10px;
-    font-size: 16px;
-    width: 250px;
-    border: none;
-    border-radius: 15px;
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(90deg, #5f1d55, #ab47bc) border-box; /* Borda degradê roxa */
-    border: 2px solid transparent;
-    transition: transform 0.2s; /* Transição para animação de foco */
-    text-align: center;
-}
-
-input:focus {
-    transform: scale(1.05); /* Aumenta o tamanho ao focar */
-    outline: none; /* Remove contorno padrão */
-}
-
-/* Estilizando o placeholder */
-input::placeholder {
-    color: #7a0c78; /* Cor do placeholder (roxo claro) */
-    opacity: 0.8; /* Opacidade do placeholder */
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #9a1b76; /* Cor de fundo do botão */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra do botão */
-}
-
-button:hover {
-    background-color: #bc479f; /* Cor do botão ao passar o mouse */
-    transform: translateY(-2px); /* Levanta o botão ao passar o mouse */
-}
-
-#flower-list {
-    width: 100%; /* Ocupa toda a largura disponível */
-    padding: 0 20px; /* Adiciona um pouco de padding lateral */
-    margin-top: 5%; /* Espaço entre o formulário e a lista */
-    animation: fadeIn 0.5s; /* Animação da lista de flores */
-}
-
-.flower-item {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 100%; /* Itens ocupam toda a largura */
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
-    border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Borda semi-transparente */
-    margin-bottom: 10px;
-    transition: background-color 0.3s; /* Transição de fundo */
-}
-
-.flower-item:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Fundo mais claro ao passar o mouse */
-}
-
-.flower-actions {
-    display: flex;              /* Usar flexbox para organizar os botões em linha */
-    gap: 10px;                 /* Espaçamento entre os botões */
-    align-items: center;       /* Alinha os itens verticalmente no centro */
-}
-
-.flower-actions button {
-    flex: 0 0 auto;           /* Impede que os botões mudem de tamanho */
-    padding: 5px 10px;        /* Padding interno dos botões */
-    background-color: #bc479b; /* Cor do botão */
-    border: none;             /* Sem borda */
-    border-radius: 5px;      /* Bordas arredondadas */
-    transition: background-color 0.3s; /* Transição suave de cor */
-}
-
-.flower-actions button:hover {
-    background-color: #9a1b8f; /* Cor ao passar o mouse */
-}
-
-/* Animações */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    animation: fadeInUp 1s ease-out;
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px); /* Move o texto para baixo */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0); /* Retorna à posição original */
-    }
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
+input {
+    padding: 12px;
+    font-size: 17px;
+    width: 250px;
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Foco no input com efeito de transformação e sombra */
+input:focus {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    outline: none;
+}
+
+input::placeholder {
+    color: #4a6cdb;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #1e569f;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    animation: bounceIn 1s ease-out;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+button:hover {
+    background-color: #758bed;
+    transform: translateY(-3px);
+}
+
+#curriculum-list {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 5%;
+    max-width: 600px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.curriculum-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px;
+    margin-bottom: 12px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.curriculum-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.curriculum-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.curriculum-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Estilo responsivo para telas menores */
+@media (max-width: 600px) {
+    .curriculum-item {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    to {
-        transform: translateY(0);
-        opacity: 1;
+
+    .curriculum-content {
+        flex: 1;
+    }
+
+    .curriculum-actions {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: flex-start;
     }
 }
