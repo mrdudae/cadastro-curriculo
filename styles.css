@@ -1,4 +1,3 @@
-/* Importa a fonte Poppins com peso de 400 e 700 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 * {
@@ -9,16 +8,16 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
     color: #fff;
-    position: relative;
-    overflow: hidden;
     background: linear-gradient(45deg, #a0def1, #7b9ed7, #6a82fb, #5358be, #293daf);
     background-size: 300% 300%;
     animation: gradientShift 8s ease infinite;
+    min-height: 100vh;
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
 @keyframes gradientShift {
@@ -30,13 +29,15 @@ body {
 h1 {
     text-align: center;
     margin-top: 5%;
-    font-size: 2.8rem;
-    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
     color: #fff;
     animation: fadeInDown 1s ease-out;
 }
 
-/* Animação de fade e deslizamento para o título */
+h2 {
+    margin-top: 5%;
+}
+
 @keyframes fadeInDown {
     0% { opacity: 0; transform: translateY(-20px); }
     100% { opacity: 1; transform: translateY(0); }
@@ -45,11 +46,16 @@ h1 {
 .form-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px; 
     margin-top: 6%;
     margin-bottom: 20px;
     align-items: center;
     animation: fadeInUp 1s ease-out;
+    width: 80%;
+    max-width: 600px; 
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 40px; 
+    border-radius: 15px;
 }
 
 @keyframes fadeInUp {
@@ -60,14 +66,14 @@ h1 {
 input {
     padding: 12px;
     font-size: 17px;
-    width: 250px;
+    width: 100%;
+    max-width: 300px; 
     border: none;
     border-radius: 15px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Foco no input com efeito de transformação e sombra */
 input:focus {
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
@@ -78,16 +84,20 @@ input::placeholder {
     color: #4a6cdb;
 }
 
+.button-curriculm,
 button {
     padding: 12px 25px;
-    font-size: 16px;
-    background-color: #1e569f;
+    font-size: 20px;
+    width: 80%;
+    max-width: 350px; 
+    background-color: #3a4ecf;
     color: white;
     border: none;
     border-radius: 25px;
     cursor: pointer;
+    margin-top: 6%;
     transition: background-color 0.3s, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.276);
     animation: bounceIn 1s ease-out;
 }
 
@@ -98,10 +108,12 @@ button {
 }
 
 button:hover {
-    background-color: #758bed;
+    background-color: #425dd8;
     transform: translateY(-3px);
 }
-
+#personName{
+    margin-top: 15%;
+}
 #curriculum-list {
     width: 100%;
     padding: 0 20px;
@@ -140,11 +152,15 @@ button:hover {
 
 /* Estilo responsivo para telas menores */
 @media (max-width: 600px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+    }
+
     .curriculum-item {
         flex-direction: column;
         align-items: flex-start;
     }
-
     .curriculum-content {
         flex: 1;
     }

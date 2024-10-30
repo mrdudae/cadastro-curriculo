@@ -9,7 +9,7 @@ class Person {
 class CurriculumApp {
     constructor() {
         this.people = []; // Array para armazenar os currículos
-        this.editingIndex = null; // Índice da pessoa que está sendo editada
+        this.editingIndex = null; 
         this.init();
     }
 
@@ -74,8 +74,8 @@ class CurriculumApp {
                     <span><strong>Profissão:</strong> ${person.profession}</span>
                 </div>
                 <div class="curriculum-actions">
-                    <button onclick="curriculumApp.editPerson(${index})">Editar</button>
-                    <button onclick="curriculumApp.removePerson(${index})">Remover</button>
+                    <button class="button-curriculm" onclick="curriculumApp.editPerson(${index})">Editar</button>
+                    <button class="button-curriculm" onclick="curriculumApp.removePerson(${index})">Remover</button>
                 </div>
             `;
     
@@ -91,5 +91,29 @@ class CurriculumApp {
     }
 }
 
-// Instancia a aplicação de currículos
 const curriculumApp = new CurriculumApp();
+
+
+// Apenas aceitar numeros, na opção idade
+
+document.addEventListener('DOMContentLoaded', function() {
+    const formContainer = document.querySelector('.form-container');
+    const inputs = formContainer.querySelectorAll('input');
+    const personAgeInput = document.getElementById('personAge');
+
+    personAgeInput.addEventListener('input', function(e) {
+        this.value = this.value.replace(/[^0-9]/g, ''); // Permite apenas números
+    });
+
+    inputs.forEach((input, index) => {
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                    inputs[index + 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } 
+            }
+        });
+    });
+});
