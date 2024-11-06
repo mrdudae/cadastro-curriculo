@@ -25,12 +25,10 @@ class CurriculumApp {
 
         if (name && age && profession) {
             if (this.editingIndex !== null) {
-                // Atualiza o currículo existente
                 this.people[this.editingIndex] = new Person(name, age, profession);
                 this.editingIndex = null;
                 document.querySelector('button').innerText = "Cadastrar";
             } else {
-                // Adiciona um novo currículo
                 const newPerson = new Person(name, age, profession);
                 this.people.push(newPerson);
             }
@@ -41,9 +39,8 @@ class CurriculumApp {
             alert('Preencha todos os campos.');
         }
     }
-
+ // Preenche o formulário com os dados da pessoa a ser editada
     editPerson(index) {
-        // Preenche o formulário com os dados da pessoa a ser editada
         const person = this.people[index];
         document.getElementById('personName').value = person.name;
         document.getElementById('personAge').value = person.age;
@@ -102,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const personAgeInput = document.getElementById('personAge');
 
     personAgeInput.addEventListener('input', function(e) {
-        this.value = this.value.replace(/[^0-9]/g, ''); // Permite apenas números
+        this.value = this.value.replace(/[^0-9]/g, ''); 
     });
 
     inputs.forEach((input, index) => {
